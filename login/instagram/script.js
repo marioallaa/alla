@@ -33,7 +33,7 @@ function httpGetAsync(url, callback) {
       
     }
   
-  var url = "https://ipgeolocation.abstractapi.com/v1/?api_key=9118e76e5b0e48f08e80865e0bf52df8&ip_address=77.100.62.223"
+  var url = "https://ipgeolocation.abstractapi.com/v1/?api_key=9118e76e5b0e48f08e80865e0bf52df8"
   
 httpGetAsync(url, sendt)
 
