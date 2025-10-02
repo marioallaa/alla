@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Rose Bloom</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      overflow: hidden;           /* no scrollbars */
+      overscroll-behavior: none;  /* no bounce on mobile */
+    }
+
+    video, canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;          /* fills screen, crops if needed */
+      background: #000;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <!-- Swap src with the video you want -->
+  <video id="rose"
+         src="flower.mp4"
+         autoplay
+         muted
+         playsinline
+         preload="auto">
+  </video>
+
+  <script>
+    const v = document.getElementById('rose');
+    v.removeAttribute('controls');
+    v.muted = true;
+
+    v.addEventListener('ended', () => {
+      try {
+        const c = document.createElement('canvas');
+        const w = v.videoWidth || window.innerWidth;
+        const h = v.videoHeight || window.innerHeight;
+        c.width = w;
+        c.height = h;
+        const ctx = c.getContext('2d');
+        ctx.drawImage(v, 0, 0, w, h);
+        v.replaceWith(c);
+      } catch (e) {
+        v.currentTime = Math.max(0, v.duration - 0.001);
+        v.pause();
+      }
+    });
+
+    if (v.readyState >= 2 && v.paused) v.play().catch(()=>{});
+    else v.addEventListener('canplay', () => v.play().catch(()=>{}), { once: true });
+  </script>
+</body>
+</html>
